@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram-xtext="http://altran.com/general/integration/xtextsirius/model/diagram/1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-xtext="http://altran.com/general/integration/xtextsirius/model/properties/1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" version="12.0.0.2017041100">
+  <ownedViewpoints name="Vppetrinets" modelFileExtension="petrinets">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VpPetriNet" label="PetriNet" initialisation="true" pasteDescriptions="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@toolSections.0/@ownedTools[name='PastePN']" domainClass="PetriNets.PetriNet">
+      <metamodel href="../../pns/model/PetriNets.ecore#/"/>
+      <metamodel href="../../variability/model/variability.ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HidePNElements" label="Hide Petri net Elements">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.getHidePNElement()"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HidePNElementsWOPC" label="Hide Elements wo PC">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.getHidePNElementWoPC()"/>
+      </filters>
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ExpressionValidation" level="ERROR" message="The message is added programmatically" targetClass="variability::PresenceCondition">
+          <audits auditExpression="service:self.validateExpression()"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default Layer" label="Default Layer">
+        <nodeMappings name="IdPlace" deletionDescription="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@toolSections.0/@ownedTools[name='DeletePlaceTransition']" semanticCandidatesExpression="feature:places" domainClass="PetriNets.Place">
+          <borderedNodeMappings name="BorderedPlace" semanticCandidatesExpression="aql:self" domainClass="PetriNets.Place">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW" workspacePath="/pns.pnpl.design/icons/transparent-1x1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if (self.marking > 3) then self.marking else '' endif" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.marking = 1">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 2">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-2.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 3">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-3.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <nodeMappings name="IdTransition" deletionDescription="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@toolSections.0/@ownedTools[name='DeletePlaceTransition']" semanticCandidatesExpression="feature:trans" domainClass="PetriNets.Transition">
+          <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" width="10" height="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="IdTimedPlace" preconditionExpression="aql:self.target.oclIsTypeOf(PetriNets::TimedPlace)" deletionDescription="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@toolSections.0/@ownedTools[name='DeletePlaceTransition']" semanticCandidatesExpression="feature:places" domainClass="PetriNets.TimedPlace">
+          <borderedNodeMappings name="BorderedPlace" semanticCandidatesExpression="aql:self" domainClass="PetriNets.Place">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW" workspacePath="/pns.pnpl.design/icons/transparent-1x1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="BorderedTimedPlace" semanticCandidatesExpression="aql:self" domainClass="PetriNets.TimedPlace">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:timed" labelPosition="node" resizeKind="NSEW" workspacePath="/pns.pnpl.design/icons/transparent-1x1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:if (self.marking > 3) then self.marking else '' endif" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.marking = 1">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 2">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-2.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 3">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-default-3.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="IdPTArc" sourceMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdPlace'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTimedPlace']" targetMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTransition']" targetFinderExpression="[self.output/]" sourceFinderExpression="[self.input/]" domainClass="PetriNets.PTArc" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="IdTPArc" sourceMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTransition']" targetMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdPlace'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTimedPlace']" targetFinderExpression="[self.output/]" sourceFinderExpression="[self.input/]" domainClass="PetriNets.TPArc" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="PetriNets">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="IdCreationPlace" label="Create Place" nodeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdPlace']" iconPath="/pns.pnpl.design/icons/palette-icons/place.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="PetriNets.Place" referenceName="places"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="IdCreationTimedPlace" label="Create Timed Place" nodeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTimedPlace']" iconPath="/pns.pnpl.design/icons/palette-icons/place.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="PetriNets.TimedPlace" referenceName="places"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="IdCreationTransition" label="Create Transition" nodeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTransition']" iconPath="/pns.pnpl.design/icons/palette-icons/transition.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="PetriNets.Transition" referenceName="trans"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="IdCreationPTArc" label="Create PTArc" edgeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdPTArc']" iconPath="/pns.pnpl.design/icons/palette-icons/pc-edge.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer(&quot;PetriNet&quot;)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PetriNets.PTArc" referenceName="arcs">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="input" valueExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="output" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="IdCreationTPArc" label="Create TPArc" edgeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdTPArc']" iconPath="/pns.pnpl.design/icons/palette-icons/pc-edge.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer(&quot;PetriNet&quot;)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PetriNets.TPArc" referenceName="arcs">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="input" valueExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="output" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeletePlaceTransition">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeletePlaceTransition" id="pns.pnpl.design.action.pc.DeletePlaceTransition"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PasteDescription" name="PastePN" forceRefresh="true">
+            <container name="container"/>
+            <containerView name="containerView"/>
+            <copiedView name="copiedView"/>
+            <copiedElement name="copiedElement"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="PastePetrinetElements" id="pns.pnpl.design.action.pc.PastePNElements">
+                <parameters name="copiedElement" value="var:copiedElement"/>
+                <parameters name="copiedView" value="var:copiedView"/>
+                <parameters name="containerView" value="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Arc Names">
+        <edgeMappingImports name="ImportPTArc" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdPTArc']">
+          <conditionnalStyles predicateExpression="aql:true">
+            <style>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <edgeMappingImports name="ImportTPArc" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdTPArc']">
+          <conditionnalStyles predicateExpression="aql:true">
+            <style>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+      </additionalLayers>
+      <additionalLayers name="PresenceCondition">
+        <edgeMappings name="PCtoTrPlArc" sourceMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@additionalLayers[name='PresenceCondition']/@containerMappings[name='PresenceConditionContainer']" targetMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdPlace'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdPTArc'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdTPArc'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTransition'] //@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTimedPlace']" targetFinderExpression="feature:elements">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PresenceConditionContainer" domainClass="variability::PresenceCondition" childrenPresentation="List">
+          <subNodeMappings name="ExpressionNode" labelDirectEdit="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@additionalLayers[name='PresenceCondition']/@toolSections.0/@ownedTools[name='ExpressionEdit']" semanticCandidatesExpression="feature:expression" domainClass="variability::Expression">
+            <style xsi:type="style:NoteDescription" labelSize="12" showIcon="false" labelExpression="service:getLabelParentExpression()" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" hideLabelByDefault="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="PresenceCondition">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Create PC" precondition="aql:if (self.oclIsKindOf(PetriNets::Arc) and self.name &lt;> null ) then true else if (self.oclIsKindOf(PetriNets::Place) and self.name &lt;> null ) then true else if (self.oclIsKindOf(PetriNets::Transition) and self.name &lt;> null ) then true else false endif endif endif" iconPath="/pns.pnpl.design/icons/palette-icons/pc-icon.png">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreatePCJavaAction" id="pns.pnpl.design.action.pc.CreatePresenceCondition">
+                <parameters name="element" value="aql:self"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="PresenceCondToTrPlArc" edgeMappings="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@additionalLayers[name='PresenceCondition']/@edgeMappings[name='PCtoTrPlArc']" iconPath="/pns.pnpl.design/icons/palette-icons/pc-edge.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="elements" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="diagram-xtext:XtextDirectEditModelDescription" name="ExpressionEdit" inputLabelExpression="aql:self" injectorId="pns.pnpl.design.action.presence.condition">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" valueExpression="var:newValue">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer()">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="FeatueValidation" id="pns.pnpl.design.action.pc.FeatureValidation">
+                    <parameters name="presenceCondition" value="aql:self"/>
+                    <parameters name="containerView" value="aql:self.eInverse(diagram::DNodeList)->first()"/>
+                    <parameters name="removeMarkers" value="true"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Petri-net-Invariant-Layer">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="IdPlaceHighlighted" semanticCandidatesExpression="service:self.highlightPlaces()" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdPlace']">
+          <borderedNodeMappings name="BorderedPlace" semanticCandidatesExpression="aql:self" domainClass="PetriNets.Place">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW" workspacePath="/pns.pnpl.design/icons/transparent-1x1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:WorkspaceImageDescription" borderLineStyle="dash_dot" labelSize="12" showIcon="false" labelExpression="aql:if (self.marking > 3) then self.marking else '' endif" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-highlight.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.marking = 1">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-highlight-1.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 2">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-highlight-2.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.marking = 3">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="6" labelPosition="node" workspacePath="/pns.pnpl.design/icons/place-figure-highlight-3.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="IdTransitionHighlighted" semanticCandidatesExpression="service:self.highlightTransition()" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@nodeMappings[name='IdTransition']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="3" borderLineStyle="dash" showIcon="false" sizeComputationExpression="10" resizeKind="NSEW" width="10" height="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappingImports name="IdPTArcHighlighted" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdPTArc']" inheritsAncestorFilters="false">
+          <conditionnalStyles predicateExpression="service:self.highlightArc()">
+            <style sizeComputationExpression="5">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+              <centerLabelStyleDescription showIcon="false">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <edgeMappingImports name="IdTPArcHighligh" importedMapping="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@defaultLayer/@edgeMappings[name='IdTPArc']" inheritsAncestorFilters="false">
+          <conditionnalStyles predicateExpression="service:self.highlightArc()">
+            <style sizeComputationExpression="5">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+              <centerLabelStyleDescription showIcon="false">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="pns.pnpl.design.action.presence.condition.service.PresenceConditionServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="DefaultPalette"/>
+  <extensions xsi:type="properties:ViewExtensionDescription">
+    <categories>
+      <pages groups="//@extensions.0/@categories.0/@groups.0">
+        <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@pages.0"/>
+      </pages>
+      <groups name="MainGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="aql:self.oclIsKindOf(variability::Expression) = false">
+        <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0"/>
+      </groups>
+      <overrides xsi:type="properties:GroupOverrideDescription" name="ExpressionGroup" domainClass="variability::Expression" semanticCandidateExpression="var:self" preconditionExpression="aql:self.oclIsKindOf(variability::Expression)" filterControlsFromOverriddenGroupExpression="aql:self.oclIsKindOf(variability::Expression) = false">
+        <controls xsi:type="properties-xtext:XtextSingleLineModelDescription" name="ExpressionSingleLine" labelExpression="aql:'Expression'" valueExpression="aql:self" injectorId="pns.pnpl.design.action.presence.condition">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer()">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="var:newValue">
+                <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="JavaActionFeatureValidation" action="//@ownedViewpoints[name='Vppetrinets']/@ownedRepresentations[name='VpPetriNet']/@additionalLayers[name='PresenceCondition']/@toolSections.0/@ownedTools[name='ExpressionEdit']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </controls>
+        <overrides href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0"/>
+      </overrides>
+    </categories>
+  </extensions>
+</description:Group>

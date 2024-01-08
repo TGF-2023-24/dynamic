@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PNPL Analysis
+Bundle-SymbolicName: pnpl.analysis;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pnpl.analysis.activator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ analysis.solver,
+ org.sat4j.core,
+ org.eclipse.core.resources,
+ org.eclipse.core.resources,
+ de.ovgu.featureide.core;bundle-version="3.6.0",
+ de.ovgu.featureide.ui;bundle-version="3.6.0",
+ pns,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.14.0",
+ pnpl_variability,
+ pnpl.featureide,
+ org.eclipse.collections;bundle-version="10.2.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: pnpl.analysis
+Bundle-ActivationPolicy: lazy
+Import-Package: PetriNets,
+ com.google.common.collect;version="10.0.1",
+ de.ovgu.featureide.fm.core.analysis.cnf.formula,
+ de.ovgu.featureide.fm.core.base,
+ de.ovgu.featureide.fm.core.configuration,
+ de.ovgu.featureide.fm.core.io.manager,
+ de.ovgu.featureide.fm.core.job,
+ de.ovgu.featureide.fm.core.localization,
+ org.prop4j
+Export-Package: pnpl.analysis.activator,
+ pnpl.analysis.analysis,
+ pnpl.analysis.handlers,
+ pnpl.analysis.helpers
+Bundle-Vendor: UAM - MISO

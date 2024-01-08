@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pns.pnpl.design.tabbar
+Bundle-SymbolicName: pns.pnpl.design.tabbar;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pns.pnpl.design.tabbar.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.sirius;bundle-version="6.0.2",
+ org.eclipse.sirius.diagram;bundle-version="6.0.2",
+ org.eclipse.emf.transaction;bundle-version="1.9.1",
+ org.eclipse.gmf.runtime.notation;bundle-version="1.9.0",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
+ org.eclipse.core.expressions,
+ pns;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: pns.pnpl.design.tabbar
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: UAM - MISO

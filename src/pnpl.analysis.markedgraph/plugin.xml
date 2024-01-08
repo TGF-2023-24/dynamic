@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="pnpl.analysis.analysis.lines">
+      <client
+            class="pnpl.analysis.markedgraph.analysis.AnalysisPNPL"
+            name="Marked Graph nets">
+      </client>
+   </extension>
+   <extension
+         point="pnpl.analysis.analysis.products">
+      <client
+            class="pnpl.analysis.markedgraph.analysis.AnalysisProducts"
+            name="Marked Graph nets">
+      </client>
+   </extension>
+
+</plugin>

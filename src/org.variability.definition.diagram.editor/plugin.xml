@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated PCDiagramDefinition -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="pcdef.presentation.PcdefModelWizardID"
+            name="%_UI_PcdefModelWizard_label"
+            class="pcdef.presentation.PcdefModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PcdefModelFile.gif">
+         <description>%_UI_PcdefModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated PCDiagramDefinition -->
+      <editor
+            id="pcdef.presentation.PcdefEditorID"
+            name="%_UI_PcdefEditor_label"
+            icon="icons/full/obj16/PcdefModelFile.gif"
+            extensions="pcdef"
+            class="pcdef.presentation.PcdefEditor"
+            contributorClass="pcdef.presentation.PcdefActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

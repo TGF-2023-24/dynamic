@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="pnpl.analysis.analysis.lines" name="Petri Net Product Lines Analysis" schema="schema/pnpl.analysis.analysis.lines.exsd"/>
+   <extension-point id="pnpl.analysis.analysis.products" name="Products Analysis" schema="schema/pnpl.analysis.analysis.products.exsd"/>
+
+	
+   <extension point="org.eclipse.ui.handlers">
+      <handler class="pnpl.analysis.handlers.PNPLHandler"     commandId="pnpl.analysis.commandPNPL"></handler>
+      <handler class="pnpl.analysis.handlers.ProductsHandler" commandId="pnpl.analysis.commandProducts"></handler>
+   </extension>      
+   
+   <extension point="org.eclipse.ui.commands">
+      <command id="pnpl.analysis.commandPNPL" name="Command in PNPL"></command>
+      <command id="pnpl.analysis.commandProducts" name="Command in Products"></command>
+   </extension>
+   
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution allPopups="false" locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <separator name="pnpl.analysis.separator2" visible="true"></separator>
+      </menuContribution>
+      <menuContribution allPopups="false" locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu id="pnpl.product_analysis_menu_structural" label="PNPL Analysis">
+            <visibleWhen checkEnabled="true">
+               <iterate ifEmpty="false" operator="or">
+                  <test forcePluginActivation="true" property="org.eclipse.core.resources.name" value="*.vrb"></test>
+               </iterate>
+            </visibleWhen>
+            <command commandId="pnpl.analysis.commandPNPL" label="Petri Net Product Lines" style="push" tooltip="Analysis of Petri Net Product Line"></command>
+            <command commandId="pnpl.analysis.commandProducts" label="All Products" style="push" tooltip="Analysis of All Products in Petri Net Product Line"></command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module PluginXML('http://www.eclipse.org/emf/2002/Ecore')]
+
+[template public generatePluginXMLFile(projectName : EString, modelName : EString)]
+[file ('plugin.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="[projectName/].Activator"
+               id="[projectName/]"
+	       name="[modelName/]">
+    </component>
+  </extension>
+</plugin>
+[/file]
+[/template]

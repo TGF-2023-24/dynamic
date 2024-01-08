@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.variability.definition.diagram.design.Activator"
+               id="org.variability.definition.diagram.design"
+	       name="diagram">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="org.variability.definition.diagram.design.generate.LoadOdesign"
+           id="org.variability.definition.diagram.design.condition.LoadOdesign">
+     </javaActions>
+     <javaActions
+            actionClass="org.variability.definition.diagram.design.condition.FeatureValidation"
+            id="org.variability.definition.diagram.design.condition.IdFeatureValidation">
+      </javaActions>
+      <javaActions
+            actionClass="org.variability.definition.diagram.design.condition.PresenceConditionCreation"
+            id="org.variability.definition.diagram.design.condition.IdCreatePresenceCondition">
+      </javaActions>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu
+              id="VariabilityMenu"
+              label="Variability "
+              mnemonic="S">
+           <command
+                 commandId="org.variability.definition.diagram.design.generate.variability.editor"
+                 id="VariabilityEditorMenu"
+                 label="Generate Variability Editor"
+                 mnemonic="S"
+                 style="push">
+              <visibleWhen
+                    checkEnabled="false">
+                 <with
+                       variable="activeMenuSelection">
+                    <iterate
+                          ifEmpty="false">
+                       <adapt
+                             type="org.eclipse.core.resources.IResource">
+                          <test
+                                property="org.eclipse.core.resources.name"
+                                value="*.pcdef">
+                          </test>
+                       </adapt>
+                    </iterate>
+                 </with>
+              </visibleWhen>
+           </command>
+        </menu>
+     </menuContribution>
+  </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           id="org.variability.definition.diagram.design.generate.variability.editor"
+           name="Generate Variability Editor">
+     </command>
+  </extension>
+  <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="org.variability.definition.diagram.design.generate.GenerateVariabilityEditor"
+           commandId="org.variability.definition.diagram.design.generate.variability.editor">
+     </handler>
+  </extension>
+    <!-- Xtext Injector -->
+     <extension
+         point="com.altran.general.integration.xtextsirius.runtime.xtextLanguageInjector">
+      <injector
+            class="org.variability.definition.diagram.design.condition.PresenceConditionInjector"
+            id="org.variability.definition.diagram.design.presence.condition">
+      </injector>
+   </extension>
+     <extension
+           point="org.eclipse.ui.views">
+        <view
+              class="org.variability.definition.diagram.design.view.FilterPetrinet"
+              icon="icons/icons8-filter-16.png"
+              id="org.variability.definition.diagram.design.FilterPetrinet"
+              name="Filter Petrinet"
+              restorable="true">
+        </view>
+        <view
+              class="org.variability.definition.diagram.design.view.InvariantPetriNetView"
+              icon="icons/invariant-view-icon.png"
+              id="org.variability.definition.diagram.design.Invariants"
+              name="Invariant View"
+              restorable="true">
+        </view>
+     </extension>
+</plugin>

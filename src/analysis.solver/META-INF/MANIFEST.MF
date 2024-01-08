@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SAT Solver
+Bundle-SymbolicName: analysis.solver
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.sat4j.core;bundle-version="2.3.5"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: analysis.solver
+Bundle-Vendor: UAM - MISO
+Export-Package: solver.features,
+ solver.features.impl,
+ solver.formulas,
+ solver.formulas.cnf,
+ solver.issues,
+ solver.presenceConditions

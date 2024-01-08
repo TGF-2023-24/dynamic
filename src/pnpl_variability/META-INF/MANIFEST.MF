@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PNPL Variability
+Bundle-SymbolicName: pnpl_variability;singleton:=true
+Automatic-Module-Name: pnpl_variability
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: UAM - MISO
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: variability,
+ variability.impl,
+ variability.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

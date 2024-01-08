@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module WorkflowVariabilityEditor('http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::variability::definition::diagram::design::generate::template::PresenceConditionServicesFile /]
+[import org::variability::definition::diagram::design::generate::template::PluginXML /]
+[import org::variability::definition::diagram::design::generate::template::MetainfFile /]
+[import org::variability::definition::diagram::design::generate::template::utils::FeatureUtils /]
+
+[template public WorkflowVariabilityEditor(modelEObject : EObject, projectName : EString, modelName : EString)]
+[comment @main /]
+[presenceConditionServices(projectName) /]	
+[generatePluginXMLFile(projectName, modelName) /]
+[generateMETAINFFile(projectName)/]
+
+[comment Package Utils /]
+[generateFeatureUtils(projectName)/]
+
+[/template]

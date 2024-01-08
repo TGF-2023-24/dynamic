@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module queriesPresenceCondUtils('http://www.eclipse.org/emf/2002/Ecore')]
+
+[query public getPackagePathbyProjectName(projectName : String) : String = 'src/'.concat(projectName.replaceAll('\\.','/')).concat('/') /]
+
+
+

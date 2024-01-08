@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated pnpl_variability -->
+      <package
+            uri="/PNPL_variability/model/pnpl_variability"
+            class="variability.VariabilityPackage"
+            genModel="model/pnpl_variability.genmodel"/>
+   </extension>
+
+</plugin>

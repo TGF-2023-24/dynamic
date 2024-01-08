@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/org.variability.definition.diagram/src-gen" creationIcons="false"
+    editDirectory="/org.variability.definition.diagram.edit/src-gen" editorDirectory="/org.variability.definition.diagram.editor/src-gen"
+    modelPluginID="org.variability.definition.diagram" modelName="PCDiagramDefinition"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.variability.definition.diagram.edit" editorPluginID="org.variability.definition.diagram.editor"
+    usedGenPackages="../../org.eclipse.sirius.diagram/model/diagram.genmodel#//diagram platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>PCDiagramDefinition.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Pcdef" disposableProviderFactory="true" ecorePackage="PCDiagramDefinition.ecore#/">
+    <genClasses ecoreClass="PCDiagramDefinition.ecore#//RepresentationExtensionFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PCDiagramDefinition.ecore#//RepresentationExtensionFeature/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PCDiagramDefinition.ecore#//RepresentationExtensionFeature/viewpointUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PCDiagramDefinition.ecore#//RepresentationExtensionFeature/representationName"/>
+    </genClasses>
+    <genClasses ecoreClass="PCDiagramDefinition.ecore#//PCDiagramDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PCDiagramDefinition.ecore#//PCDiagramDefinition/graphicalElements"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

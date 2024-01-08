@@ -1,0 +1,46 @@
+<plugin>
+   <!--Avoid the creation of Sirius Project
+   <extension
+         point="org.modular.sirius.definition.ext">
+      <new_client
+            class="org.miso.petrinets.sirius.ext.CreateDesignSiriusProject">
+      </new_client>
+   </extension>	
+   -->
+   <!--Create Sirius Project -->	
+   <!-- Register the viewpoint --> 
+   <extension point="org.eclipse.sirius.componentization">
+    <component class="pns.pnpl.design.Activator"
+               id="pns.pnpl.design.sirius"
+	       name="project">
+    </component>
+  </extension>	 
+  <!-- Xtext Injector -->
+     <extension
+         point="com.altran.general.integration.xtextsirius.runtime.xtextLanguageInjector">
+      <injector
+            class="pns.pnpl.design.action.presence.condition.PresenceConditionInjector"
+            id="pns.pnpl.design.action.presence.condition">
+      </injector>
+   </extension >
+   <!-- External Actions -->
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="pns.pnpl.design.action.presence.condition.PresenceConditionCreation"
+            id="pns.pnpl.design.action.pc.CreatePresenceCondition">
+      </javaActions>
+      <javaActions
+            actionClass="pns.pnpl.design.action.presence.condition.FeatureValidation"
+            id="pns.pnpl.design.action.pc.FeatureValidation">
+      </javaActions>
+      <javaActions
+            actionClass="pns.pnpl.design.action.presence.condition.DeletePlaceTransition"
+            id="pns.pnpl.design.action.pc.DeletePlaceTransition">
+      </javaActions>
+      <javaActions
+            actionClass="pns.pnpl.design.action.presence.condition.PastePNElements"
+            id="pns.pnpl.design.action.pc.PastePNElements">
+      </javaActions>
+   </extension>   
+</plugin>

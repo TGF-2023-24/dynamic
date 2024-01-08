@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FeatureIDE Adapter for PNPL
+Bundle-SymbolicName: pnpl.featureide;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pnpl.featureide.activator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources;bundle-version="3.13.0",
+ pns,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.14.0",
+ pnpl_variability,
+ analysis.solver,
+ com.google.inject,
+ pnpl_variability.editor,
+ de.ovgu.featureide.fm.core,
+ de.ovgu.featureide.core
+Automatic-Module-Name: petrinets-featureide
+Bundle-ActivationPolicy: lazy
+Export-Package: pnpl.featureide.activator,
+ pnpl.featureide.composer,
+ pnpl.featureide.helper
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: UAM - MISO
+Import-Package: org.eclipse.xtext.resource,
+ org.eclipse.xtext.serializer.impl

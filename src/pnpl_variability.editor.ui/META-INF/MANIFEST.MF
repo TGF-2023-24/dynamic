@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: pnpl_variability.editor.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: pnpl_variability.editor.ui
+Bundle-Vendor: UAM - MISO
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pnpl_variability.editor.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pnpl_variability.editor,
+ pnpl_variability.editor.ide,
+ pnpl_variability,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.xtext.ide
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: pnpl_variability.editor.ui.internal,
+ pnpl_variability.ui,
+ pnpl_variability.ui.contentassist,
+ pnpl_variability.ui.labeling,
+ pnpl_variability.ui.outline,
+ pnpl_variability.ui.quickfix
+Bundle-Activator: pnpl_variability.editor.ui.internal.EditorActivator
