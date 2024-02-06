@@ -21,7 +21,6 @@ Require-Bundle:
  de.ovgu.featureide.ui;bundle-version="3.6.4",
  de.ovgu.featureide.fm.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.pc.definition.diagram.design
 Export-Package: org.variability.definition.diagram.design.condition,

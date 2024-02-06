@@ -4,15 +4,16 @@
    <extension
          point="pnpl.analysis.analysis.lines">
       <client
-            class="pnpl.analysis.statemachine.analysis.AnalysisPNPL"
-            name="State Machine nets">
+            class="pnpl.analysis.dynamic.analysis.AnalysisPNPL"
+            name="Reachability Graph">
       </client>
    </extension>
    <extension
          point="pnpl.analysis.analysis.products">
       <client
-            class="pnpl.analysis.statemachine.analysis.AnalysisProducts"
-            name="State Machine nets">
+            class="pnpl.analysis.dynamic.analysis.AnalysisProducts"
+            name="Reachability Graph">
       </client>
    </extension>
+
 </plugin>

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 
-import PetriNets.Arc;
 import PetriNets.PTArc;
 import PetriNets.PetriNet;
 import PetriNets.Place;
@@ -71,7 +70,7 @@ public class Graph {
 		else {
 			this.AddVertex(newVertex);
 		}
-		//Añadimos la nueva arista a la lista del vertice origen
+		//Aï¿½adimos la nueva arista a la lista del vertice origen
 		list.add(new Edge(edge.getName(), newVertex));
 		this.graph.put(from, list);
 		
@@ -108,7 +107,7 @@ boolean AddVertexVertexEdge(Vertex to, Vertex from, Transition edge) {
 		else {
 			this.AddVertex(newVertex);
 		}
-		//Añadimos la nueva arista a la lista del vertice origen
+		//Aï¿½adimos la nueva arista a la lista del vertice origen
 		list.add(new Edge(edge.getName(), newVertex));
 		this.graph.put(from, list);
 		
@@ -134,7 +133,7 @@ boolean AddVertexVertexEdge(Vertex to, Vertex from, Transition edge) {
 	
 	boolean AddEdge(Vertex from, Vertex to, Transition edge) {
 		
-		//Si el grafo contiene ambos vertices añadimos una arista del origen al destino
+		//Si el grafo contiene ambos vertices aï¿½adimos una arista del origen al destino
 		if (this.graph.containsKey(from)) {
 			if (this.graph.containsKey(to)) {
 				List<Edge> list = this.graph.get(from);

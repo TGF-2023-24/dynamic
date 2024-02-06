@@ -20,7 +20,6 @@ Bundle-ActivationPolicy: lazy
 Export-Package: pnpl.featureide.activator,
  pnpl.featureide.composer,
  pnpl.featureide.helper
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: UAM - MISO
 Import-Package: org.eclipse.xtext.resource,
  org.eclipse.xtext.serializer.impl

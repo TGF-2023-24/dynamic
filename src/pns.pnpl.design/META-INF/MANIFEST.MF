@@ -28,7 +28,6 @@ Require-Bundle: org.eclipse.ui,
  pnpl.featureide,
  analysis.solver,
  org.variability.definition.diagram.design
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: pns.pnpl.design
 Bundle-Vendor: UAM - MISO

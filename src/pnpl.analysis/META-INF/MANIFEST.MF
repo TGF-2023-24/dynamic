@@ -17,7 +17,6 @@ Require-Bundle: org.eclipse.ui,
  pnpl_variability,
  pnpl.featureide,
  org.eclipse.collections;bundle-version="10.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: pnpl.analysis
 Bundle-ActivationPolicy: lazy
 Import-Package: PetriNets,

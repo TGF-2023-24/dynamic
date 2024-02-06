@@ -8,7 +8,6 @@ Bundle-ClassPath: .
 Bundle-Activator: pcdef.provider.PCDiagramDefinitionEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: pcdef.provider
 Require-Bundle: org.variability.definition.diagram;visibility:=reexport,
  org.eclipse.sirius.diagram.ui;visibility:=reexport,
