@@ -1,25 +1,41 @@
 package pnpl.analysis.dynamic.analysis;
 
-import pnpl.analysis.analysis.AbstractAnalysisPNPL;
+import org.eclipse.core.resources.IFile;
 
-public class AnalysisPNPL extends AbstractAnalysisPNPL {
+import PetriNets.PetriNet;
+import pnpl.analysis.dynamic.analysis.AnalysisPNPL;
+import pnpl.analysis.dynamic.gpetrinet.GPetriNet;
+import pnpl.analysis.dynamic.gpetrinet.Graph;
+import pnpl.analysis.dynamic.helpers.VariabilityHelper;
 
-	@Override
+public class AnalysisPNPL extends AbstractAnalysisDynamic {
+	
 	protected boolean buildCondition() {
-		// Nota para Javier de EG: Aquí tendrías que poner el codigo para hacer el RG de una PNPL
-		// Sé que no es evidente, pero viene de un nombre antiguo
+		// Nota para Javier de EG: Aqui tendras que poner el codigo para hacer el reachability graph de una PNPL
+		// Se que no es evidente, pero viene de un nombre antiguo
+		
+		System.out.println("[REACHABILITY GRAPH]: Loading PetriNet...");
+		PetriNet pn = vh.getPetriNet();
+		
+		IFile tmp_file = vh.getPetriNetFile();
+		
+		//Creates the reachability grap from the given PetriNet
+		Graph graph = new Graph();
+		GPetriNet gpn = new GPetriNet(pn);
+		System.out.println("[REACHABILITY GRAPH]: Building reachability graph...");
+		graph.reachabilityGraph(gpn);
+		//Output for Graphviz
+		System.out.println("[REACHABILITY GRAPH]: Reachability graph for Graphviz.");
+		String reachability_graph_Graphviz_format = graph.toGraphviz();
+		System.out.println(reachability_graph_Graphviz_format);
+	
 		return true;
 	}
-	
-//	@Override
-//	protected boolean buildReachabilityGraph() {
-//		
-//		
-//		
-//		PetriNet pn = vh.getPetriNet();
-//		if (pn == null) return false;
-//		
-//		
-//		return true;
-//	}
+
+	@Override
+	public boolean run() {
+		// TODO Auto-generated method stub
+		this.buildCondition();
+		return false;
+	}
 }
