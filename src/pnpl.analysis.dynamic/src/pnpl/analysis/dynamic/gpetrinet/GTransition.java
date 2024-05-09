@@ -10,16 +10,19 @@ import PetriNets.Transition;
 //Derived from PetriNets
 public class GTransition {
 
-	String name;
-	List<GPTArc> inputs = null; //Must be initialized
-	List<GTPArc> outputs = null; //Must be initialized
+	private String name;
+	protected List<GPTArc> inputs = null; //Must be initialized
+	protected List<GTPArc> outputs = null; //Must be initialized
+	private int delay;
 	
 	GTransition(Transition trans){
 		this.name = trans.getName();
+		this.delay = trans.getDelay();
 	}
 	
 	GTransition(GTransition trans){
 		this.name = trans.getName();
+		this.delay = trans.getDelay();
 	}
 	
 	GTransition(){
@@ -28,8 +31,7 @@ public class GTransition {
 	
 	public boolean equals(GTransition other) {
 		if (this.name.equals(other.getName())) {
-			if (this.inputs.equals(other.inputs)) {
-				if (this.outputs.equals(other.outputs))
+			if (this.delay == other.getDelay()) {
 				return true;
 			}
 		}
@@ -58,6 +60,14 @@ public class GTransition {
 	
 	public void setOutputs(List<GTPArc> outputs) {
 		this.outputs = outputs;
+	}
+	
+	public void setDelay(int delay) {
+		this.delay = delay;
+	}
+	
+	public int getDelay() {
+		return this.delay;
 	}
 	
 	public String toString() {

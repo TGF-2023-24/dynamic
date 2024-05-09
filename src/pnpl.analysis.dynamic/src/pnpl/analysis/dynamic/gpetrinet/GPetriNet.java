@@ -15,6 +15,7 @@ public class GPetriNet {
 	
 	private List<GPlace> places = null;
 	private List<GTransition> transitions = null;
+	private int global_time;
 	
 	public GPetriNet(PetriNet pn){
 		this.places = new ArrayList<GPlace>();
@@ -25,6 +26,10 @@ public class GPetriNet {
 		for (Transition trans : pn.getTrans()) {
 			this.transitions.add(new GTransition(trans));
 		}
+		
+		//System.out.println(this.toString());
+		
+		this.global_time = 0;
 		
 		updateReferences(pn);
 	}
@@ -38,6 +43,8 @@ public class GPetriNet {
 		for (GTransition trans : gpn.getTrans()) {
 			this.transitions.add(new GTransition(trans));
 		}
+		
+		this.global_time = gpn.getTime();
 		
 		this.updateReferences(gpn);
 	}
@@ -113,11 +120,32 @@ public class GPetriNet {
 	public boolean equals(GPetriNet other) {
 		if (this.places.equals(other.getPlaces())) {
 			if (this.transitions.equals(other.getTrans())) {
-				return true;
+				if (this.global_time == other.getTime()) {
+					return true;
+				}
 			}
 		}
 		return false;
 		//return (this.places.equals(other.getPlaces()) && this.transitions.equals(other.getTrans()));
+	}
+	
+	public void updateTime(int new_time) {
+		this.global_time = new_time;
+		for (GPlace place : this.places) {
+			place.updateTime(new_time);
+		}
+	}
+	
+	public int getTime() {
+		return this.global_time;
+	}
+	
+	private void setTime(int time) {
+		this.global_time = time;
+	}
+	
+	public void addTime(int time) {
+		this.global_time += time;
 	}
 	
 	private GTransition getTransition(Transition find) {
@@ -134,6 +162,16 @@ public class GPetriNet {
 				return trans;
 		}
 		return null;
+	}
+	
+	public int getTransitionIndex(GTransition find) {
+		for (int i = 0; i < this.transitions.size(); i++) {
+			if (this.transitions.get(i).equals(find)) {
+				return i;
+			}
+		}
+		
+		return -1;
 	}
 	
 	private GPlace getPlace(Place find) {
@@ -171,20 +209,14 @@ public class GPetriNet {
 	public String getLabel() {
 		String rtr = "{";
 		
-		int counter = 0;
 		for (GPlace place : this.places) {
-			if (place.getMarking() > 0) {
+			if (!place.getTokens().isEmpty()) {
 				rtr += place.getLabel() + ", ";
-				counter++;
 			}
 		}
 		
 		rtr = rtr.substring(0, rtr.length() - 2);
 		rtr += "}";
-		if (counter > 1) {
-			int j = 0;
-			j++;
-		}
 		
 		return rtr;
 	}

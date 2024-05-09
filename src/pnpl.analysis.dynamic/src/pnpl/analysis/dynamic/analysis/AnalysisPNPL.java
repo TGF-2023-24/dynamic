@@ -23,10 +23,12 @@ public class AnalysisPNPL extends AbstractAnalysisDynamic {
 		Graph graph = new Graph();
 		GPetriNet gpn = new GPetriNet(pn);
 		System.out.println("[REACHABILITY GRAPH]: Building reachability graph...");
-		graph.reachabilityGraph(gpn);
+		//graph.reachabilityGraph(gpn);
+		graph.timedReachabilityGraph(gpn, 100);
 		//Output for Graphviz
 		System.out.println("[REACHABILITY GRAPH]: Reachability graph for Graphviz.");
-		String reachability_graph_Graphviz_format = graph.toGraphviz();
+		//String reachability_graph_Graphviz_format = graph.toGraphviz();
+		String reachability_graph_Graphviz_format = graph.toTimedGraphviz();
 		System.out.println(reachability_graph_Graphviz_format);
 	
 		return true;
