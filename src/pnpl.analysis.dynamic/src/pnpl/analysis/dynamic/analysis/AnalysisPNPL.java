@@ -5,8 +5,8 @@ import org.eclipse.core.resources.IFile;
 import PetriNets.PetriNet;
 import pnpl.analysis.dynamic.analysis.AnalysisPNPL;
 import pnpl.analysis.dynamic.gpetrinet.GPetriNet;
-import pnpl.analysis.dynamic.gpetrinet.Graph;
 import pnpl.analysis.dynamic.helpers.VariabilityHelper;
+import pnpl.analysis.dynamic.reachabilitygraph.ReachabilityGraph;
 
 public class AnalysisPNPL extends AbstractAnalysisDynamic {
 	
@@ -20,15 +20,15 @@ public class AnalysisPNPL extends AbstractAnalysisDynamic {
 		IFile tmp_file = vh.getPetriNetFile();
 		
 		//Creates the reachability grap from the given PetriNet
-		Graph graph = new Graph();
-		GPetriNet gpn = new GPetriNet(pn);
+		ReachabilityGraph graph = new ReachabilityGraph();
+		//GPetriNet gpn = new GPetriNet(pn);
 		System.out.println("[REACHABILITY GRAPH]: Building reachability graph...");
-		//graph.reachabilityGraph(gpn);
-		graph.timedReachabilityGraph(gpn, 100);
+		graph.reachabilityGraph(pn);
+		//graph.timedReachabilityGraph(pn, 100);
 		//Output for Graphviz
 		System.out.println("[REACHABILITY GRAPH]: Reachability graph for Graphviz.");
-		//String reachability_graph_Graphviz_format = graph.toGraphviz();
-		String reachability_graph_Graphviz_format = graph.toTimedGraphviz();
+		String reachability_graph_Graphviz_format = graph.toGraphviz();
+		//String reachability_graph_Graphviz_format = graph.toTimedGraphviz();
 		System.out.println(reachability_graph_Graphviz_format);
 	
 		return true;

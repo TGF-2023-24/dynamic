@@ -2,13 +2,13 @@ package pnpl.analysis.dynamic.gpetrinet;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import PetriNets.Arc;
 import PetriNets.PTArc;
 import PetriNets.PetriNet;
 import PetriNets.Place;
 import PetriNets.TPArc;
 import PetriNets.Transition;
+import pnpl.analysis.dynamic.reachabilitygraph.State;
 
 //Derived from PetriNets
 public class GPetriNet {
@@ -31,7 +31,7 @@ public class GPetriNet {
 		
 		this.global_time = 0;
 		
-		updateReferences(pn);
+		this.updateReferences(pn);
 	}
 	
 	public GPetriNet(GPetriNet gpn) {
@@ -47,6 +47,21 @@ public class GPetriNet {
 		this.global_time = gpn.getTime();
 		
 		this.updateReferences(gpn);
+	}
+	
+	public void updateState(State state) {
+		
+		for (GPlace place : this.places) {
+			if (state.placeIsIn(place)) {
+				place.createTokens(state.getTokensPlace(place));
+			}
+			else {
+				place.deleteTokens();
+			}
+		}
+		
+		this.global_time = state.getTime();
+		
 	}
 	
 	private void updateReferences(PetriNet pn) {
@@ -140,7 +155,7 @@ public class GPetriNet {
 		return this.global_time;
 	}
 	
-	private void setTime(int time) {
+	public void setTime(int time) {
 		this.global_time = time;
 	}
 	
@@ -208,6 +223,11 @@ public class GPetriNet {
 	
 	public String getLabel() {
 		String rtr = "{";
+		
+		if (this.global_time > 0)
+		{
+			rtr = this.global_time + "-{";
+		}
 		
 		for (GPlace place : this.places) {
 			if (!place.getTokens().isEmpty()) {

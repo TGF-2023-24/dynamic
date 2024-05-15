@@ -43,6 +43,18 @@ public class GPlace {
 		}
 	}
 	
+	public void deleteTokens() {
+		this.tokens = new ArrayList<GToken>();
+	}
+	
+	public void createTokens(List<GToken> tokens) {
+		this.tokens = new ArrayList<GToken>();
+		
+		for (GToken token : tokens) {
+			this.tokens.add(new GToken(token));
+		}
+	}
+	
 	public boolean equals(GPlace other) {
 		if (this.name.equals(other.getName()))
 			if (this.tokens.equals(other.getTokens()))
@@ -89,7 +101,7 @@ public class GPlace {
 		this.tokens.add(token);
 	}
 	
-	public void deleteToken() {
+	public void deleteLastToken() {
 		//removes the last token of the list
 		this.tokens.remove(this.tokens.size() - 1);
 	}
