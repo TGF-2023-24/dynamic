@@ -23,7 +23,9 @@ public class DynamicAnalysisPNPL extends AbstractAnalysis {
 		//Creates the reachability grap from the given PetriNet
 		ReachabilityGraph graph = new ReachabilityGraph();
 		System.out.println("[REACHABILITY GRAPH]: Building reachability graph...");
-		graph.reachabilityGraph(pn);
+		if (graph.reachabilityGraph(pn) == false) {
+			return false;
+		}
 		//Output for Graphviz
 		System.out.println("[REACHABILITY GRAPH]: Reachability graph for Graphviz.");
 		String reachability_graph_Graphviz_format = graph.toGraphviz();

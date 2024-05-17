@@ -49,6 +49,17 @@ public class GPetriNet {
 		this.updateReferences(gpn);
 	}
 	
+	//Checks if there is at least one token in the petrinet
+	public boolean anyTokens() {
+		for (GPlace place : this.places) {
+			if (place.getMarking() > 0 || place.getTokens().size() > 0) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public void updateState(State state) {
 		
 		for (GPlace place : this.places) {

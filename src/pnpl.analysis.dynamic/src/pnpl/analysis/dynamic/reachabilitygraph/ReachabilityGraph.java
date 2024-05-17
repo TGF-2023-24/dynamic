@@ -33,7 +33,7 @@ public class ReachabilityGraph {
 			"\tedge [fontname=\"Helvetica,Arial,sans-serif\"]\n" + 
 			"\tlayout=neato\r\n" + 
 			"\toverlap=false\r\n" + 
-			"\tlabel=\"Reachability graph of Petri Net\"" + 
+			"\tlabel=\"Reachability graph of Petri Net\"\n" + 
 			"\tnode [shape = doublecircle];"; //Falta poner aqui el estado inicial al crear el grafo
 	
 	String GRAPHVIZ_HEADER_2 ="\tnode [shape = circle];\n";
@@ -94,11 +94,16 @@ public class ReachabilityGraph {
 		return true;
 	}
 	
-	public void reachabilityGraph(PetriNet pn) {
+	public boolean reachabilityGraph(PetriNet pn) {
 		
 		//Create the petriNet
 		this.petriNet = new GPetriNet(pn);
 		this.petriNet.setTime(-1); //Mark as non-timed petri net
+		
+		if (this.petriNet.anyTokens() == false) {
+			System.out.println("[REACHABILITY GRAPH:] There are not any tokens in the given Petri net. Aborting building the reachability graph.");
+			return false;
+		}
 		
 		//Original Petri Net added as the first element
 		State firstState = new State(pn);
@@ -112,16 +117,21 @@ public class ReachabilityGraph {
 			e.printStackTrace();
 		}
 		
-		return;
+		return true;
 	}
 	
-	public void timedReachabilityGraph(PetriNet pn, int time_limit) {
+	public boolean timedReachabilityGraph(PetriNet pn, int time_limit) {
 		
 		//Create the petriNet
 		this.petriNet = new GPetriNet(pn);
 		
 		//Set the timed reachability graph
 		this.petriNet.updateTime(0);
+		
+		if (this.petriNet.anyTokens() == false) {
+			System.out.println("[TIMED REACHABILITY GRAPH:] There are not any tokens in the given Petri net. Aborting building the timed reachability graph.");
+			return false;
+		}
 		
 		//Original Petri Net added as the first element
 		State firstState = new State(this.petriNet);
@@ -137,7 +147,7 @@ public class ReachabilityGraph {
 			e.printStackTrace();
 		}
 
-		return;
+		return true;
 	}
 	
 	boolean transitionFire(GTransition trans, boolean fire) {

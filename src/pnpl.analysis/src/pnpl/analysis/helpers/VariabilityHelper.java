@@ -109,7 +109,10 @@ public class VariabilityHelper {
 
 			while (line != null) {
 				if(line.indexOf("pn")>=0) {	
-					pnfile = line.substring(line.indexOf("\"")+1,line.lastIndexOf("\""));
+					//pnfile = line.substring(line.indexOf("\"")+1,line.lastIndexOf("\""));
+					//Was not reading the file name correctly
+					pnfile = line.substring(line.indexOf("\"")+1,line.length() - 1);
+					pnfile = pnfile.substring(0, pnfile.indexOf("\""));
 				}else if (line.indexOf("fm")>=0) {
 					fmfile = line.substring(line.indexOf("\"")+1,line.lastIndexOf("\""));
 				}else if (line.indexOf("PC for")>=0){					
