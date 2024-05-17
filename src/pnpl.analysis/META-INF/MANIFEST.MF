@@ -27,8 +27,7 @@ Import-Package: PetriNets,
  de.ovgu.featureide.fm.core.io.manager,
  de.ovgu.featureide.fm.core.job,
  de.ovgu.featureide.fm.core.localization,
- org.prop4j,
- pnpl.analysis.dynamic.analysis
+ org.prop4j
 Export-Package: pnpl.analysis.activator,
  pnpl.analysis.analysis,
  pnpl.analysis.handlers,
