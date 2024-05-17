@@ -293,7 +293,7 @@ public class ReachabilityGraph {
 					//Update the Petri net time
 					//nGpn.addTime(nGpn.getTrans().get(trans_ind).getDelay());
 
-					System.out.println(this.toTimedGraphviz());
+					//System.out.println(this.toTimedGraphviz());
 					this.recursiveTimeReachabilityGraph(new_state);
 
 					return; //We only explore the first fired transition

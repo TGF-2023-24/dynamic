@@ -7,6 +7,10 @@
             class="pnpl.analysis.dynamic.analysis.AnalysisPNPL"
             name="Reachability Graph">
       </client>
+      <client
+            class="pnpl.analysis.dynamic.analysis.TimedAnalysisPNPL"
+            name="Timed Reachability Graph">
+      </client>
    </extension>
    <extension
          point="pnpl.analysis.analysis.products">
