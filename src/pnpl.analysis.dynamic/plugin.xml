@@ -4,11 +4,11 @@
    <extension
          point="pnpl.analysis.analysis.lines">
       <client
-            class="pnpl.analysis.dynamic.analysis.AnalysisPNPL"
+            class="pnpl.analysis.dynamic.analysis.DynamicAnalysisPNPL"
             name="Reachability Graph">
       </client>
       <client
-            class="pnpl.analysis.dynamic.analysis.TimedAnalysisPNPL"
+            class="pnpl.analysis.dynamic.analysis.DynamicTimedAnalysisPNPL"
             name="Timed Reachability Graph">
       </client>
    </extension>

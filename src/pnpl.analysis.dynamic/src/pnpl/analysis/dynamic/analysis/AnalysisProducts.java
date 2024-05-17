@@ -1,7 +1,8 @@
 package pnpl.analysis.dynamic.analysis;
 
+import pnpl.analysis.analysis.AbstractAnalysisProducts;
 
-public class AnalysisProducts extends AbstractAnalysisDynamic {
+public class AnalysisProducts extends AbstractAnalysisProducts {
 
 	protected boolean runProductAnalysis() {
 		//if (pn == null) return false;

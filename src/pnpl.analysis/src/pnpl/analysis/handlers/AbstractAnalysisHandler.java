@@ -18,7 +18,6 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 import pnpl.analysis.analysis.AbstractAnalysis;
 import pnpl.analysis.helpers.MenuHelper;
-import pnpl.analysis.dynamic.analysis.AbstractAnalysisDynamic;
 
 /**
  * Handler for the abstract class of analysis
@@ -61,37 +60,7 @@ public abstract class AbstractAnalysisHandler extends AbstractHandler implements
 				Object[] selection = dialog.getResult();
 				if (selection.length>0) {
 					IConfigurationElement extension = offeredAnalysis.get(selection[0]);
-					AbstractAnalysis      analysis = null;
-					try {
-						analysis  = (AbstractAnalysis)extension.createExecutableExtension("class");
-					}
-					catch(Exception e) {
-						//For dynamic analysis
-						AbstractAnalysisDynamic analysisDynamic  = (AbstractAnalysisDynamic)extension.createExecutableExtension("class");
-						String                name      = (String)extension.getAttribute("name");
-						
-						long time_start, time_end;
-						time_start = System.currentTimeMillis();
-									
-						analysisDynamic.loadVariabilityFile(vrbfile);
-						
-						String outprint = "";
-						if (!analysisDynamic.run()) {
-							outprint = STRING_SOME;
-						} else {
-							outprint = STRING_ALL;
-						}
-						outprint = outprint + name;
-						time_end = System.currentTimeMillis();
-						
-						System.out.println("[petri nets analysis] " + outprint);
-						String timeprint =  "The task has taken " + ( time_end - time_start ) + " milliseconds";
-						System.out.println("[petri nets analysis] " + timeprint);
-						
-						MessageDialog.openInformation(null, "Analysis results", outprint + ".\n" + timeprint);
-						
-						return true;
-					}
+					AbstractAnalysis      analysis = (AbstractAnalysis)extension.createExecutableExtension("class");;
 					String                name      = (String)extension.getAttribute("name");
 				
 					long time_start, time_end;

@@ -4,10 +4,10 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: pnpl.analysis.dynamic;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: pnpl.analysis.dynamic.activator.Activator
-Require-Bundle: pnpl.analysis,
- org.eclipse.ui,
- org.eclipse.core.runtime
-Automatic-Module-Name: pnpl.analysis.extension.markedgraph
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ pnpl.analysis
+Automatic-Module-Name: pnpl.analysis.dynamic
 Bundle-ActivationPolicy: lazy
 Import-Package: PetriNets,
  PetriNets.impl,
@@ -37,4 +37,7 @@ Import-Package: PetriNets,
  pnpl.featureide.helper,
  solver.presenceConditions,
  variability
-Export-Package: pnpl.analysis.dynamic.analysis
+Export-Package: pnpl.analysis.dynamic.activator,
+ pnpl.analysis.dynamic.analysis,
+ pnpl.analysis.dynamic.gpetrinet,
+ pnpl.analysis.dynamic.reachabilitygraph
