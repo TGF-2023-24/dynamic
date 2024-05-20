@@ -174,7 +174,7 @@ public class ReachabilityGraph {
 	boolean transitionTimeFire(GTransition trans, boolean fire, int global_time) {
 		
 		for (GPTArc arc : trans.getInputs()) {
-			if (arc.getInput().getTokens().isEmpty() || arc.getInput().getTokens().size() < arc.getWeight() || transitionOnTime(trans, arc.getInput(), global_time) )
+			if (arc.getInput().getTokens().isEmpty() || arc.getInput().getTokens().size() < arc.getWeight() || !transitionOnTime(trans, arc.getInput(), global_time) )
 				return false;
 		}
 		
@@ -200,7 +200,7 @@ public class ReachabilityGraph {
 	
 	boolean transitionOnTime(GTransition trans, GPlace place, int global_time){
 		for (GToken token : place.getTokens()) {
-			if (token.getTimestamp() + trans.getDelay() > global_time) {
+			if (global_time + trans.getDelay() > this.time_limit) {
 				return false;
 			}
 		}

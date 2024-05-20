@@ -1,5 +1,7 @@
 package pnpl.analysis.dynamic.analysis;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.resources.IFile;
 
 import PetriNets.PetriNet;
@@ -22,11 +24,29 @@ public class DynamicTimedAnalysisPNPL extends AbstractAnalysis {
 			return false;
 		}
 		
+		String input = JOptionPane.showInputDialog("Select time limit:");
+		int time_limit = 100;
+		
+		if (input != null && !input.isEmpty()) {
+			try {
+				time_limit = Integer.parseInt(input);
+				System.out.println("[REACHABILITY GRAPH]: Time limit selected " + input + ".");
+				JOptionPane.showMessageDialog(null, "[REACHABILITY GRAPH]: Time limit selected " + input + ".");
+			} catch(NumberFormatException e) {
+				System.out.println("[REACHABILITY GRAPH]: Cannot parse to int " + input + ". Using 100 by default.");
+				JOptionPane.showMessageDialog(null, "[REACHABILITY GRAPH]: Cannot parse to int " + input + ". Using 100 by default.", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+        } else {
+            // Si no se proporcionó una entrada, mostrar un mensaje de error
+            System.out.println("[REACHABILITY GRAPH]: No time limit selected, using 100 by default.");
+            JOptionPane.showMessageDialog(null, "[REACHABILITY GRAPH]: No time limit selected, using 100 by default.");
+        }
+		
 		//Creates the reachability grap from the given PetriNet
 		ReachabilityGraph graph = new ReachabilityGraph();
 		System.out.println("[TIMED REACHABILITY GRAPH]: Building reachability graph...");
 		
-		if (graph.timedReachabilityGraph(pn, 100) == false) {
+		if (graph.timedReachabilityGraph(pn, time_limit) == false) {
 			return false;
 		}
 		//Output for Graphviz
